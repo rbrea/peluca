@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>vaccines</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M20.7406,1.5442 L21.386,0.9268 L26.2104,5.2542 L25.5664,5.8856 L24.1762,4.634 L21.6436,7.0994 L25.7484,10.8374 L25.096,11.4828 L23.031,9.5942 L10.494,21.8792 L4.3018,22.0136 L0.4238,25.788 L0.0878,25.4576 L4.0918,21.5852 L4.2822,15.925 L16.8248,3.9284 L14.7654,2.0482 L15.4178,1.4322 L19.5758,5.2178 L22.1126,2.7776 L20.7406,1.5442 Z M11.593,11.522 C11.593,11.522 10.648,13.496 12.7704,13.496 C14.8928,13.489 14.3748,15.4014 14.3748,15.4014 L20.9926,8.9586 L17.5402,5.8058 L11.593,11.522 Z" id="path-1"></path>
+    </defs>
+    <g id="Átomos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Iconos" transform="translate(-445.000000, -3728.000000)">
+            <g id="ico_visa-copy" transform="translate(445.000000, 3728.000000)">
+                <g id="Page-1" transform="translate(15.500000, 15.500000) scale(-1, 1) translate(-15.500000, -15.500000) translate(2.000000, 2.000000)">
+                    <g id="Group-9" transform="translate(0.000000, 0.211400)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Clip-8" fill="#666666" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

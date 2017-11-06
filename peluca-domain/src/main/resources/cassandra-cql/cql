@@ -1,0 +1,17 @@
+CREATE KEYSPACE mixer with replication = {'class': 'SimpleStrategy', 'replication_factor':3};
+
+USE mixer;
+
+CREATE TABLE EventData (key text, requestJson text, responseJson text, PRIMARY KEY (key)) with compression = {'sstable_compression': 'LZ4Compressor', 'chunk_length_kb': 64};
+
+CREATE TABLE MixerSharedvalue (environment text, key text, data blob, PRIMARY KEY (environment, key)) WITH COMPACT STORAGE;
+
+CREATE TABLE MixerConfiguration (environment text, key text, data blob, PRIMARY KEY (environment, key)) WITH COMPACT STORAGE;
+
+CREATE TABLE LegalEntitySharedvalue (environment text, key text, data blob, PRIMARY KEY (environment, key)) WITH COMPACT STORAGE;
+CREATE TABLE RuleSellTypeActiveSharedvalue (environment text, key text, data blob, PRIMARY KEY (environment, key)) WITH COMPACT STORAGE;
+CREATE TABLE ReleaseVersionLogSharedValue (environment text, key text, data blob, PRIMARY KEY (environment, key)) WITH COMPACT STORAGE;
+CREATE TABLE RulePaymentRefundSharedValue (environment text, key text, data blob, PRIMARY KEY (environment, key)) WITH COMPACT STORAGE;
+CREATE TABLE RuleOmLegalEntityPpSharedValue (environment text, key text, data blob, PRIMARY KEY (environment, key)) WITH COMPACT STORAGE;
+CREATE TABLE RuleFictionalChargeSharedValue (environment text, key text, data blob, PRIMARY KEY (environment, key)) WITH COMPACT STORAGE;
+CREATE TABLE RuleOmLegalEntityPadSharedValue (environment text, key text, data blob, PRIMARY KEY (environment, key)) WITH COMPACT STORAGE;

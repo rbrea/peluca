@@ -1,0 +1,235 @@
+.centered {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+#loading-message-div {
+	position: fixed  !important;
+	bottom: 1%  !important;
+	right: 1%  !important;
+	background: rgba(25, 25, 25, .5)  !important;
+	/*background-color: RED;*/
+	border: 1px double #000  !important;
+	text-align: center  !important;
+	height: 60px  !important;
+	width: 190px  !important;
+	color: #fff  !important;
+	z-index: 1000  !important;
+	-webkit-border-radius: 5px  !important;
+	-moz-border-radius: 5px  !important;
+	border-radius: 5px  !important;
+	padding: 14px 0px !important;
+}
+
+label.error {
+    background: url('../../img/inner/unchecked.gif') no-repeat;
+    padding-left: 20px;
+    margin-left: .3em;
+    margin-top: .6em;
+}
+
+.roleable {
+	/*cursor: no-drop !important;*/
+	cursor: no-drop;
+	opacity: 0.65;
+	pointer-events: none;
+}
+
+select.roleable {
+	/*cursor: no-drop !important;*/
+	background-color: #eee;
+	border-color: #ccc;
+}
+
+.hide-prod-element {
+	display:none !important;
+}
+
+button.multiselect {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+button.multiselect b.caret {
+	position: absolute;
+    right: 4px;
+    top: 50%;
+}
+
+/* EVA RIBBON START */
+.eva-ribbon {
+	-moz-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	max-width: calc(100% - 15px);
+	text-align: right;
+	line-height: 1.2;
+	font-size: 13px;
+	position: absolute;
+	padding: 5px 10px;
+	right: -5px
+}
+
+.eva-ribbon:before {
+	content: "";
+	border-width: 0 0 5px 5px;
+	border-style: solid;
+	position: absolute;
+	bottom: -5px;
+	right: 0
+}
+
+.eva-ribbon .ribbon-border {
+	position: absolute;
+	height: 100%;
+	width: 10px;
+	left: -10px;
+	top: 0
+}
+
+.eva-ribbon .ribbon-content {
+	overflow: hidden;
+	display: block;
+	width: 100%
+}
+
+.eva-ribbon.-flag .ribbon-border {
+	display: none
+}
+
+.eva-ribbon.-flat {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none
+}
+
+.eva-ribbon.-flat:before {
+	display: none
+}
+
+.eva-ribbon.-left {
+	text-align: left;
+	right: auto;
+	left: -5px
+}
+
+.eva-ribbon.-left .ribbon-border {
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+	right: -10px;
+	left: auto
+}
+
+.eva-ribbon.-left.-sticker .ribbon-border {
+	-moz-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg)
+}
+
+.eva-ribbon.-left:before {
+	border-width: 0 5px 5px 0;
+	right: auto;
+	left: 0
+}
+
+.eva-ribbon.-primary {
+	background-color: #EB1B00;
+	color: #FFF
+}
+
+.eva-ribbon.-primary:before {
+	border-color: transparent #DB1C00
+}
+
+.eva-ribbon.-primary .ribbon-border polygon, .eva-ribbon.-primary .ribbon-border .ribbon-polygon {
+	fill: #EB1B00
+}
+
+.eva-ribbon.-secondary {
+	background-color: #0050D0;
+	color: #FFF
+}
+
+.eva-ribbon.-secondary:before {
+	border-color: transparent #003FA3
+}
+
+.eva-ribbon.-secondary .ribbon-border polygon, .eva-ribbon.-secondary .ribbon-border .ribbon-polygon {
+	fill: #0050D0
+}
+
+.eva-ribbon.-tertiary {
+	background-color: #00B02E;
+	color: #FFF
+}
+
+.eva-ribbon.-tertiary:before {
+	border-color: transparent #029729
+}
+
+.eva-ribbon.-tertiary .ribbon-border polygon, .eva-ribbon.-tertiary .ribbon-border .ribbon-polygon {
+	fill: #00B02E
+}
+/* EVA RIBBON END */
+
+table.dataTable tbody .even td{
+	background-color: #f4f4f4 !important;
+}
+
+table.dataTable thead th{
+	background-color: #d6d6d6 !important;
+}
+
+table.dataTable tbody .odd .highlight{
+	background-color: rgba(0, 255, 88, 0.21) !important;
+}
+
+table.dataTable tbody .even .highlight{
+	background-color: rgba(0, 255, 88, 0.21) !important;
+}
+
+#modalError{
+	height: auto;
+	
+}
+
+#modalError .container-fluid {
+	max-height: 70%;
+	overflow: auto;/* Or scroll, depending on your needs*/
+}
+
+#modalError .container-fluid p {
+	color: #b50005;
+}
+
+.widget .widget-head .widget-icons a {
+	color: #1d3d94;
+}
+
+.glyphicon-ok {
+	color: #00AA00;
+}
+
+.glyphicon-remove {
+	color: #bb0c00;
+}
+
+.textarea-container pre{
+	min-height: 400px;
+	max-height: 400px;
+	background-color: white;
+	overflow-x: scroll;
+	overflow-y: scroll;
+	font-size: 13px;
+}
+
+.booking-container div div p{
+	font-size: 13px;
+	margin-top: 3px;
+}

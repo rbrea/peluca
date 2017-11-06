@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+  
+    <definition name="defaultTemplate" template="/WEB-INF/pages/template/default/defaultTemplate.jsp">
+        <put-attribute name="header" value="/WEB-INF/pages/template/default/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/pages/template/default/menu.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/pages/template/default/footer.jsp" />
+    </definition>
+    
+    <definition name="mainTemplate" template="/WEB-INF/pages/template/main/template.jsp">
+        <put-attribute name="header" value="/WEB-INF/pages/template/main/header.jsp" />
+        <put-attribute name="styles" value="/WEB-INF/pages/template/main/styles.jsp" />
+        <put-attribute name="scripts-header" value="/WEB-INF/pages/template/main/scripts-header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/pages/template/main/menu.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/pages/template/main/footer.jsp" />
+        <put-attribute name="sidebar" value="/WEB-INF/pages/template/main/sidebar.jsp" />
+        <put-attribute name="scripts" value="/WEB-INF/pages/template/main/scripts.jsp" />
+    </definition>
+    
+    <definition name="loginTemplate" template="/WEB-INF/pages/template/login/login-template.jsp">
+        <put-attribute name="header" value="/WEB-INF/pages/template/main/header.jsp" />
+        <put-attribute name="styles" value="/WEB-INF/pages/template/main/styles.jsp" />
+        <put-attribute name="scripts-header" value="/WEB-INF/pages/template/main/scripts-header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/pages/template/main/menu.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/pages/template/main/footer.jsp" />
+        <put-attribute name="scripts" value="/WEB-INF/pages/template/main/scripts.jsp" />
+    </definition>
+    
+    <definition name="mainTemplateRule" template="/WEB-INF/pages/template/main/template-rule.jsp">
+        <put-attribute name="header" value="/WEB-INF/pages/template/main/header.jsp" />
+        <put-attribute name="styles" value="/WEB-INF/pages/template/main/styles.jsp" />
+        <put-attribute name="scripts-header" value="/WEB-INF/pages/template/main/scripts-header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/pages/template/main/menu.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/pages/template/main/footer.jsp" />
+        <put-attribute name="sidebar" value="/WEB-INF/pages/template/main/sidebar.jsp" />
+        <put-attribute name="scripts" value="/WEB-INF/pages/template/main/scripts.jsp" />
+    </definition>
+    
+    <!-- PLain Views -->    
+    <definition name="index" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Home" />
+        <put-attribute name="body" value="/WEB-INF/pages/index.jsp" />
+    </definition>
+    
+    <definition name="legalEntity" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Catálogo de Entidades Legales" />
+        <put-attribute name="body" value="/WEB-INF/pages/catalog/legalEntity.jsp" />
+    </definition>
+    
+    <definition name="catalogue" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Catálogos" />
+        <put-attribute name="body" value="/WEB-INF/pages/catalog/catalogue.jsp" />
+        <put-list-attribute name="modals">
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+        </put-list-attribute>
+    </definition>
+    
+    <definition name="login" template="/WEB-INF/pages/template/login/login.jsp"/>
+    <!-- API-DOCS -->
+    <definition name="docs" template="/WEB-INF/pages/template/docs/docs.jsp"/>
+    
+  	<definition name="oraclelegalentityinvoicing" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales de Oracle para Facturacion" />
+        <put-attribute name="body" value="/WEB-INF/pages/oracleLegalEntityInvoicing/oraclelegalentityinvoicing.jsp" />
+    </definition>
+    
+    <definition name="broadcast" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Broadcast" />
+        <put-attribute name="body" value="/WEB-INF/pages/catalog/broadcast.jsp" />
+    </definition>
+    
+    <definition name="ruleSellType" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Puntos de Venta" />
+        <put-attribute name="body" value="/WEB-INF/pages/ruleSellType/ruleSellType.jsp" >
+            <definition template="/WEB-INF/pages/ruleSellType/ruleSellType.jsp">
+                <put-attribute name="editButtons" value="/WEB-INF/pages/template/utils/editButtons.jsp"/>
+                <put-attribute name="ruleStateMessageRibbon" value="/WEB-INF/pages/template/utils/ruleStateMessageRibbon.jsp"/>
+            </definition>
+        </put-attribute>
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       		<add-attribute value="/WEB-INF/pages/template/subscription.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="ruleSellTypeActive" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Puntos de Venta Activas" />
+        <put-attribute name="body" value="/WEB-INF/pages/ruleSellType/ruleSellTypeActive.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="commentTemplate" template="/WEB-INF/pages/template/comments.jsp">
+        <put-attribute name="ruleType" value="SELL_TYPE" />
+        <put-attribute name="ruleStatus" value="PENDING" />
+        <put-attribute name="disableComment" value="true" />
+    </definition>
+    
+     <definition name="ruleSellTypePending" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Puntos de Venta Pendientes de Aprobacion" />
+        <put-attribute name="body" value="/WEB-INF/pages/ruleSellType/ruleSellTypePending.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="omLegalEntityPAD" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales OM PAD" />
+        <put-attribute name="body" value="/WEB-INF/pages/omLegalEntityPAD/omLegalEntityPAD.jsp">
+        	<definition template="/WEB-INF/pages/omLegalEntityPAD/omLegalEntityPAD.jsp">
+		        <put-attribute name="editButtons" value="/WEB-INF/pages/template/utils/editButtons.jsp"/>
+                <put-attribute name="ruleStateMessageRibbon" value="/WEB-INF/pages/template/utils/ruleStateMessageRibbon.jsp"/>
+        	</definition>
+        </put-attribute>
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/subscription.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="omLegalEntityPADPending" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales OM PAD Pendientes de Aprobacion" />
+        <put-attribute name="body" value="/WEB-INF/pages/omLegalEntityPAD/omLegalEntityPADPending.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="omLegalEntityPADActive" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales OM PAD Activas" />
+        <put-attribute name="body" value="/WEB-INF/pages/omLegalEntityPAD/omLegalEntityPADActive.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+     
+    <definition name="omLegalEntityPP" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales OM PP" />
+        <put-attribute name="body" value="/WEB-INF/pages/omLegalEntityPP/omLegalEntityPP.jsp" >
+        	<definition template="/WEB-INF/pages/omLegalEntityPP/omLegalEntityPP.jsp">
+		        <put-attribute name="editButtons" value="/WEB-INF/pages/template/utils/editButtons.jsp"/>
+                <put-attribute name="ruleStateMessageRibbon" value="/WEB-INF/pages/template/utils/ruleStateMessageRibbon.jsp"/>
+        	</definition>
+        </put-attribute>
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       		<add-attribute value="/WEB-INF/pages/template/subscription.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="omLegalEntityPPActive" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales OM PP Activas" />
+        <put-attribute name="body" value="/WEB-INF/pages/omLegalEntityPP/omLegalEntityPPActive.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="omLegalEntytyPPPending" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales OM PP Pendientes de Aprobacion" />
+        <put-attribute name="body" value="/WEB-INF/pages/omLegalEntityPP/omLegalEntytyPPPending.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+      <definition name="paymentRefund" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales Cobro/Refund" />
+        <put-attribute name="body" value="/WEB-INF/pages/paymentRefund/paymentRefund.jsp" >
+          <definition template="/WEB-INF/pages/paymentRefund/paymentRefund.jsp">
+              <put-attribute name="editButtons" value="/WEB-INF/pages/template/utils/editButtons.jsp"/>
+              <put-attribute name="ruleStateMessageRibbon" value="/WEB-INF/pages/template/utils/ruleStateMessageRibbon.jsp"/>
+          </definition>
+          </put-attribute>
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       		<add-attribute value="/WEB-INF/pages/template/subscription.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+     <definition name="paymentRefundActive" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales Cobro/Refund Activas" />
+        <put-attribute name="body" value="/WEB-INF/pages/paymentRefund/paymentRefundActive.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="paymentRefundPending" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales Cobro/Refund Pendientes de Aprobacion" />
+        <put-attribute name="body" value="/WEB-INF/pages/paymentRefund/paymentRefundPending.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="fictionalCharge" extends="mainTemplateRule">
+    	<put-attribute name="title" 			value="CFA Mixer - Regla de Entidades Legales Cobros Ficticios" />
+    	<put-attribute name="title-search-form"	value="Búsqueda de Entidades Legales Cobro Ficticio" />
+        <put-attribute name="editButtons"       value="/WEB-INF/pages/template/utils/editButtons.jsp"/>
+    	<put-attribute name="view-url-pending" 	value="/app/html/fictional-charge-pending" />
+    	<put-attribute name="view-url-active" 	value="/app/html/fictional-charge-active" />
+    	<put-attribute name="result-title" 		value="Entidades legales Cobro Ficticio " />
+        <put-attribute name="ruleStateMessageRibbon" value="/WEB-INF/pages/template/utils/ruleStateMessageRibbon.jsp"/>
+    	<put-attribute name="search-module" 	value="/WEB-INF/pages/fictionalCharge/fictionalChargeSearch.jsp" />
+    	<put-attribute name="result-module" 	value="/WEB-INF/pages/fictionalCharge/fictionalChargeResult.jsp" />
+        <put-attribute name="inner-scripts" 	value="/WEB-INF/pages/fictionalCharge/fictionalChargeScript.jsp" />
+
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       		<add-attribute value="/WEB-INF/pages/template/subscription.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+       		<add-attribute value="/WEB-INF/pages/fictionalCharge/modal/fictionalChargeModalAdd.jsp" />
+       		<add-attribute value="/WEB-INF/pages/fictionalCharge/modal/fictionalChargeModalImport.jsp" />
+       		<add-attribute value="/WEB-INF/pages/fictionalCharge/modal/fictionalChargeModalAudit.jsp" />
+       </put-list-attribute>
+    </definition>
+    
+    <definition name="fictionalChargeActive" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales Cobros Ficticios Activas" />
+        <put-attribute name="body" value="/WEB-INF/pages/fictionalCharge/fictionalChargeActive.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+
+    <definition name="fictionalChargePending" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales Cobros Ficticios Pendientes de Aprobacion" />
+        <put-attribute name="body" value="/WEB-INF/pages/fictionalCharge/fictionalChargePending.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+
+   	<definition name="ruleChargeInstallments" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Cobranza por Cuota" />
+        <put-attribute name="body" value="/WEB-INF/pages/ruleChargeInstallments/ruleChargeInstallments.jsp" >
+            <definition template="/WEB-INF/pages/ruleChargeInstallments/ruleChargeInstallments.jsp">
+                <put-attribute name="editButtons" value="/WEB-INF/pages/template/utils/editButtons.jsp"/>
+                <put-attribute name="ruleStateMessageRibbon" value="/WEB-INF/pages/template/utils/ruleStateMessageRibbon.jsp"/>
+            </definition>
+        </put-attribute>
+		<put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+       		<add-attribute value="/WEB-INF/pages/template/subscription.jsp" />
+       </put-list-attribute>
+    </definition>
+    
+    <definition name="ruleChargeInstallmentsPending" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Cobranza por Cuota Pendientes de Aprobacion" />
+        <put-attribute name="body" value="/WEB-INF/pages/ruleChargeInstallments/ruleChargeInstallmentsPending.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       </put-list-attribute>
+    </definition>
+    
+    <definition name="ruleChargeInstallmentsActive" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla de Cobranza por Cuota Activas" />
+        <put-attribute name="body" value="/WEB-INF/pages/ruleChargeInstallments/ruleChargeInstallmentsActive.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       </put-list-attribute>
+    </definition>
+    
+    <definition name="merchantCharge" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Catálogo de Merchants" />
+        <put-attribute name="body" value="/WEB-INF/pages/catalog/merchantCharge.jsp" />
+    </definition>
+
+    <definition name="poLegalEntity" extends="mainTemplateRule">
+        <put-attribute name="title" 			value="CFA Mixer - Regla de Entidades Legales PO" />
+        <put-attribute name="title-search-form"	value="Búsqueda de Entidades Legales PO" />
+        <put-attribute name="editButtons"       value="/WEB-INF/pages/template/utils/editButtons.jsp"/>
+        <put-attribute name="view-url-pending" 	value="/app/html/po-legal-entity-pending" />
+        <put-attribute name="view-url-active" 	value="/app/html/po-legal-entity-active" />
+        <put-attribute name="result-title" 		value="Entidades Legales PO" />
+        <put-attribute name="ruleStateMessageRibbon" value="/WEB-INF/pages/template/utils/ruleStateMessageRibbon.jsp"/>
+        <put-attribute name="search-module" 	value="/WEB-INF/pages/poLegalEntity/poLegalEntitySearch.jsp" />
+        <put-attribute name="result-module" 	value="/WEB-INF/pages/poLegalEntity/poLegalEntityResult.jsp" />
+        <put-attribute name="inner-scripts" 	value="/WEB-INF/pages/poLegalEntity/poLegalEntityScript.jsp" />
+
+        <put-list-attribute name="modals">
+            <add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/subscription.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+            <add-attribute value="/WEB-INF/pages/poLegalEntity/modal/poLegalEntityModalAdd.jsp" />
+            <add-attribute value="/WEB-INF/pages/poLegalEntity/modal/poLegalEntityModalImport.jsp" />
+            <add-attribute value="/WEB-INF/pages/poLegalEntity/modal/poLegalEntityModalAudit.jsp" />
+        </put-list-attribute>
+    </definition>
+
+    <definition name="poLegalEntityPending" extends="mainTemplate">
+        <put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales PO" />
+        <put-attribute name="body" value="/WEB-INF/pages/poLegalEntity/poLegalEntityPending.jsp" />
+        <put-list-attribute name="modals">
+            <add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+        </put-list-attribute>
+    </definition>
+
+    <definition name="poLegalEntityActive" extends="mainTemplate">
+        <put-attribute name="title" value="CFA Mixer - Regla de Entidades Legales PO" />
+        <put-attribute name="body" value="/WEB-INF/pages/poLegalEntity/poLegalEntityActive.jsp" />
+        <put-list-attribute name="modals">
+            <add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+        </put-list-attribute>
+    </definition>
+    
+    <definition name="providerCodeRule" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla Codigo Proveedores" />
+        <put-attribute name="body" value="/WEB-INF/pages/providerCodeRule/providerCodeRule.jsp" >
+            <definition template="/WEB-INF/pages/providerCodeRule/providerCodeRule.jsp">
+                <put-attribute name="editButtons" value="/WEB-INF/pages/template/utils/editButtons.jsp"/>
+                <put-attribute name="ruleStateMessageRibbon" value="/WEB-INF/pages/template/utils/ruleStateMessageRibbon.jsp"/>
+            </definition>
+        </put-attribute>
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       		<add-attribute value="/WEB-INF/pages/template/subscription.jsp" />
+            <add-attribute value="/WEB-INF/pages/template/utils/errorModal.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+    <definition name="providerCodePending" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla Codigo Proveedores Pendientes de Aprobacion" />
+        <put-attribute name="body" value="/WEB-INF/pages/providerCodeRule/providerCodeRulePending.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+    
+ 	<definition name="providerCodeActive" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Regla Codigo Proveedores Activas" />
+        <put-attribute name="body" value="/WEB-INF/pages/providerCodeRule/providerCodeRuleActive.jsp" />
+        <put-list-attribute name="modals">
+       		<add-attribute value="/WEB-INF/pages/template/comments.jsp" />
+       	</put-list-attribute>
+    </definition>
+
+    <definition name="eventReport" extends="mainTemplate">
+        <put-attribute name="title" value="CFA Mixer - Reporte de Eventos" />
+        <put-attribute name="body" value="/WEB-INF/pages/report/report.jsp" >
+            <definition template="/WEB-INF/pages/report/report.jsp">
+                <put-attribute name="editButtons" value="/WEB-INF/pages/template/utils/editButtons.jsp"/>
+            </definition>
+        </put-attribute>
+        <put-list-attribute name="modals">
+            <add-attribute value="/WEB-INF/pages/report/reportTransactionModel.jsp" />
+        </put-list-attribute>
+    </definition>
+    
+    <!-- PLain Views -->    
+    <definition name="cluster-monitor" extends="mainTemplate">
+    	<put-attribute name="title" value="CFA Mixer - Cluster Monitor" />
+        <put-attribute name="body" value="/WEB-INF/pages/monitor/cluster-monitor.jsp" />
+    </definition>
+
+</tiles-definitions>

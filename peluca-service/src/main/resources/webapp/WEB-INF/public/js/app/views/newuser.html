@@ -1,0 +1,96 @@
+<!-- Page heading -->
+<div class="page-head">
+	<h2 class="pull-left">
+		<i class="fa fa-file-o"></i> Nuevo Usuario
+	</h2>
+
+	<!-- Breadcrumb -->
+	<div class="bread-crumb pull-right">
+		<a href="${pageContext.request.contextPath}/app/html/index"><i class="fa fa-home"></i> Home</a>
+		<!-- Divider -->
+		<span class="divider">/</span> <a href="#" class="bread-current">Nuevo Usuario</a>
+	</div>
+
+	<div class="clearfix"></div>
+
+</div>
+<div class="matter">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12" >
+				<div class="widget wgreen">
+					<div class="widget-head">
+						<div class="pull-left"><i class="fa fa-user"></i>&nbsp;Alta de Usuario</div>
+						<div class="widget-icons pull-right">
+							<a href="javascript:void(0);" class="wminimize"><i class="fa fa-chevron-up"></i></a> <a
+								href="javascript:void(0);" class="wclose"><i class="fa fa-times"></i></a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				
+					<div class="widget-content">
+						<div class="padd">
+				
+							<br />
+							<!-- Form starts.  -->
+							<form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" role="form" ng-submit="createNewUser()">
+				
+								<div class="form-group">
+									<label class="col-lg-2 control-label">Nombre</label>
+									<div class="col-lg-5">
+										<input type="text" class="form-control" placeholder="Nombre" ng-model="name">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-2 control-label">Email</label>
+									<div class="col-lg-5">
+										<input type="email" class="form-control" placeholder="email" ng-model="email">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-2 control-label">Username</label>
+									<div class="col-lg-5">
+										<input type="email" class="form-control" placeholder="Username" ng-model="username">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-2 control-label">Password</label>
+									<div class="col-lg-5">
+										<input type="password" class="form-control" placeholder="Password" ng-model="password">
+									</div>
+								</div>
+				
+								<div class="form-group">
+									<label class="col-lg-2 control-label">Es administrador</label>
+									<div class="col-lg-5">
+										<label class="checkbox-inline"> 
+											<input type="checkbox" id="admin" value="admin" ng-model="admin">
+										</label> 
+									</div>
+								</div>
+				
+								<!-- <div class="form-group">
+									<div class="col-lg-offset-4 col-lg-6">
+										<button type="button" class="btn btn-sm btn-success"><i class="fa fa-check-circle-o"></i>&nbsp;Aceptar</button>
+										<button type="button" class="btn btn-sm btn-default"><i class="fa fa-eraser"></i>&nbsp;Limpiar</button>
+									</div>
+								</div> -->
+							</form>
+						</div>
+					</div>
+					<div class="widget-foot">
+						<!-- Footer goes here -->
+						<div class="pull-right">
+							<button class="btn btn-success btn-sm" ng-click="createNewUser()"><i class="fa fa-check-circle-o"></i>&nbsp;Aceptar</button> &nbsp; 
+							<button class="btn btn-default btn-sm"><i class="fa fa-eraser"></i>&nbsp;Limpiar</button>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+<!-- Matter ends -->
+</div>
+<!-- Page heading ends -->	

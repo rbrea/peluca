@@ -1,0 +1,114 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd"
+	updateCheck="true"
+	monitoring="autodetect"
+	dynamicConfig="true">
+
+	<diskStore path="java.io.tmpdir" />
+
+	<cache name="defaultCache"
+		maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="10001"
+		eternal="false"
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="5"
+		timeToLiveSeconds="10"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="legalEntity"
+		maxEntriesLocalHeap="100"
+		maxEntriesLocalDisk="101"
+		eternal="false"
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="1800"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="ruleOracleLegalEntityInvoice"
+		maxEntriesLocalHeap="100"
+		maxEntriesLocalDisk="101"
+		eternal="false"
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="1800"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="ruleOracleLegalEntityInvoiceGetLegalEntity"
+		maxEntriesLocalHeap="100"
+		maxEntriesLocalDisk="101"
+		eternal="false"
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="1800"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="ruleSellType"
+		maxEntriesLocalHeap="100"
+		maxEntriesLocalDisk="101"
+		eternal="false"
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="1800"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	<cache name="omLegalEntytyPP"
+		maxEntriesLocalHeap="100"
+		maxEntriesLocalDisk="101"
+		eternal="false"
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="1800"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	<cache name="paymentRefund"
+		maxEntriesLocalHeap="100"
+		maxEntriesLocalDisk="101"
+		eternal="false"
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="1800"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+		<cache name="fictionalCharge"
+		maxEntriesLocalHeap="100"
+		maxEntriesLocalDisk="101"
+		eternal="false"
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="1800"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="providerCodeRule"
+		maxEntriesLocalHeap="100"
+		maxEntriesLocalDisk="101"
+		eternal="false"
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="1800"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+</ehcache>

@@ -1,0 +1,25 @@
+
+{
+    "to": [
+        "leandro.rodriguez@despegar.com"
+    ],
+    "testCases": [
+        {
+            "language": "es",
+            "country": "AR",
+            "channelType": "email",
+            "model": "NewComentAlert"
+        }
+    ],
+    "models": [
+        {
+            "name": "NewComentAlert",
+            "model": {
+                "environment": "MIXER_DEV",
+                "dateNoti": "01/02/2017 00:00:01",
+                "ruleName": "TEST_RULE",
+                "urlComment": "http://10.254.209.73:9290/cfa-mixer/app/html/rule-sell-type#modalCommentRule"
+            }
+        }
+    ]
+}

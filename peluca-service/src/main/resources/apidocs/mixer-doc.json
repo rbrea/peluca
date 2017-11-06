@@ -1,0 +1,1914 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "<h2>Documentación de los servicios REST de la aplicación CFA-Mixer</h2>",
+		"version": "1.0.0",
+		"title": "CFA-Mixer API"
+	},
+	"basePath": "${mixer.base.path}/app/v3",
+	"tags": [
+		{
+			"name": "Suscripción para Broadcast",
+			"description": "Servicio que permite registrarse para Broadcast"
+		},
+		{
+			"name": "Entidades Legales",
+			"description": "Servicio que devuelve las Entidades Legales configuradas"
+		},
+		{
+			"name": "Entidad Legal para Facturacion PAM",
+			"description": "Servicio que devuelve las reglas de Entidades Legales para Facturación PAM"
+		},
+		{
+			"name": "Reglas de Tipos de Venta",
+			"description": "Servicio que devuelve las reglas de tipos de venta"
+		},
+		{
+			"name": "Regla de Cobranza en Cuotas",
+			"description": "Servicio que devuelve una regla de Cobranza en Cuotas"
+		}
+	],
+	"produces": [
+		"application/json"
+	],
+	"paths": {
+		"/broadcast-register": {
+			"post": {
+				"tags": [
+					"Suscripción para Broadcast"
+				],
+				"summary": "Permite suscribir aplicaciones a nuestros servicios de broadcast",
+				"operationId": "registerUrlCallback",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Nombre aplicacion",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"in": "body",
+						"name": "subscriberDto",
+						"description": "subscriberDto",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/BroadcastSubscriberDto"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/BasicOutputDto"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/legal-entities": {
+			"get": {
+				"tags": [
+					"Entidades Legales"
+				],
+				"summary": "Servicio que devuelve las entidades legales habilitadas",
+				"operationId": "getLegalEntities",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"name": "country_code",
+						"in": "query",
+						"description": "country_code",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "taxpayer_id",
+						"in": "query",
+						"description": "taxpayer_id",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "code",
+						"in": "query",
+						"description": "code",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "description",
+						"in": "query",
+						"description": "description",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "enabled",
+						"in": "query",
+						"description": "enabled",
+						"required": false,
+						"type": "boolean"
+					},
+					{
+						"name": "operational",
+						"in": "query",
+						"description": "operational",
+						"required": false,
+						"type": "boolean"
+					},
+					{
+						"name": "taxpayer_id_formatted",
+						"in": "query",
+						"description": "taxpayer_id_formatted",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "start_date",
+						"in": "query",
+						"description": "start_date",
+						"required": false,
+						"type": "string"
+
+					}
+				],
+				"x-examples":[
+                  {
+                      "title": "Obtener todas las Entidades Legales Habilitadas",
+                      "uriParams": {
+                          "enabled": true
+                      }
+                  },
+                  {
+                      "title": "Obtener todas las Entidades Legales de Argentina",
+                      "uriParams": {
+                          "country_code": "AR"
+                      }
+                  }
+                ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/LegalEntityDto"
+							}
+						},
+						"examples":{
+                        	"application/json":[
+                          	  	{
+                                  "id": "1",
+                                  "code": "LE006",
+                                  "description": "Despegar.com.ar SA",
+                                  "taxpayer_id": "30701307115",
+                                  "operational": true,
+                                  "creation_date": "10/10/2016 00:00:00",
+                                  "updated_date": "10/10/2016 00:00:00",
+                                  "enabled": true,
+                                  "country_code": "AR",
+                                  "taxpayer_id_formatted": "30-70130711/5",
+                                  "start_date": "01/02/2017"
+                                },
+                                {
+                                  "id": "2",
+                                  "code": "LE004",
+                                  "description": "Decolar.com Ltda",
+                                  "taxpayer_id": "03563689000231",
+                                  "operational": true,
+                                  "creation_date": "10/10/2016 00:00:00",
+                                  "updated_date": "10/10/2016 00:00:00",
+                                  "enabled": true,
+                                  "country_code": "BR",
+                                  "taxpayer_id_formatted": "03.563/68900023-1",
+                                  "start_date": "01/02/2017"
+                                }
+                        	  ]
+                        }
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/rule-sell-type": {
+			"get": {
+				"tags": [
+					"Reglas de Tipos de Venta"
+				],
+				"summary": "Servicio que devuelve las reglas de Tipo de Venta",
+				"operationId": "getRuleSellTypeList",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"name": "product_type",
+						"in": "query",
+						"description": "product_type",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "country_code_site",
+						"in": "query",
+						"description": "country_code_site",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "country_code_destiny",
+						"in": "query",
+						"description": "country_code_destiny",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "affiliated_agency",
+						"in": "query",
+						"description": "affiliated_agency",
+						"required": true,
+						"type": "string",
+						"enum": [
+						    "ALL", 
+						    "FALSE",
+						    "TRUE"
+						]
+					},
+					{
+						"name": "channel",
+						"in": "query",
+						"description": "channel",
+						"required": true,
+						"type": "string",
+						"enum": [
+						    "ALL", 
+						    "EXPEDIA"
+						]
+					}
+				],
+				"x-examples":[
+                  {
+                      "title": "Obtener Regla",
+                      "uriParams": {
+                          "product_type": "AUTO",
+                          "country_code_site": "AR",
+                          "country_code_destiny": "AR",
+                          "source_system_number":"123",
+                          "supplier": "PAM",
+                          "gateway": "PAM",
+                          "affiliated_agency": "TRUE",
+                          "prepayment": "FALSE"
+                      }
+                  }
+                ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/RuleSellTypeDto"
+							}
+						},
+						"examples":{
+                        	"application/json":
+                          	  	{
+                                  "id": "1",
+                                  "rule_start_date": "10/10/2016 00:00:00",
+                                  "product_type": "ALL",
+                                  "product_type_description": "*",
+                                  "country_code_site": "AR",
+                                  "country_code_destiny": "AR",
+                                  "affiliated_agency": "ALL",
+                                  "affiliated_agency_description": "*",
+                                  "sell_type": "DOMESTIC",
+                                  "sell_type_description": "Domestico"
+                                }
+
+                        }
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"500": {
+						"description": "Internal Error"
+					}
+				}
+			}
+		},
+		"/provider-code": {
+			"get": {
+				"tags": [
+					"Reglas de Codigo Proveedores"
+				],
+				"summary": "Servicio que devuelve las reglas de Codigo Proveedores",
+				"operationId": "getProviderCodeRule",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"name": "flight_provider",
+						"in": "query",
+						"description": "product_type",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "airline",
+						"in": "query",
+						"description": "country_code_site",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "flight_type",
+						"in": "query",
+						"description": "country_code_destiny",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "event_type",
+						"in": "query",
+						"description": "country_code_provider",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"x-examples":[
+                  {
+                      "title": "Obtener Regla",
+                      "uriParams": {
+                          "flight_provider": "GDS",
+                          "airline": "AD",
+                          "flight_type": "DOMESTIC",
+                          "event_type":"MODIFY"
+                      }
+                  }
+                ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ProviderCodeRuleDto"
+							}
+						},
+						"examples":{
+                        	"application/json":
+                          	  	{
+                                  "id": 21,
+								  "rule_start_date": "26/07/2017",
+								  "flight_provider": "GDS",
+								  "airline": "AD",
+								  "flight_type": "DOMESTIC",
+								  "event_type": "SALE",
+								  "flight_conciliation": "GOL",
+								  "flight_provider_description": "Sabre",
+								  "event_type_description": "Venta",
+								  "version": 12
+                                }
+                        }
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"500": {
+						"description": "Internal Error"
+					}
+				}
+			}
+		},
+		"/om-legal-entity-pad": {
+			"get": {
+				"tags": [
+					"Reglas de Entidades Legales OM PAD"
+				],
+				"summary": "Servicio que devuelve las reglas de Entidades Legales para OM PAD",
+				"operationId": "getRuleOMPADLegalEntityList",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"name": "product_type",
+						"in": "query",
+						"description": "product_type",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "country_code_site",
+						"in": "query",
+						"description": "country_code_site",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "country_code_destiny",
+						"in": "query",
+						"description": "country_code_destiny",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "sell_type",
+						"in": "query",
+						"description": "sell_type",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"x-examples":[
+                  {
+                      "title": "Obtener Entidad Legal Om PAD",
+                      "uriParams": {
+                          "product_type": "AUTO",
+                          "country_code_site": "AR",
+                          "sell_type": "DOMESTIC",
+                          "country_code_destiny": "BR"
+                      }
+                  }
+                ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/OmLegalEntityPADActiveDto"
+							}
+						},
+						"examples":{
+                        	"application/json":
+                          	  	{
+                          	     "id": 21,
+                                 "country_code_site": "AR",
+                 				 "product_type": "AUTO",
+                 				 "rule_start_date":"15/02/2017",
+                 				 "sell_type":"DOMESTIC",
+                 				 "country_code_destiny": "BR",
+                 				 "legal_entity_code": "LE006",
+                 				 "legal_entity_description": "Despegar.com.ar SA",
+                 				 "version": 6
+                                }
+                        }
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"500": {
+						"description": "Internal Error"
+					}
+				}
+			}
+		},
+		"/om-legal-entity-pp": {
+			"get": {
+				"tags": [
+					"Reglas de Entidades Legales OM PP"
+				],
+				"summary": "Servicio que devuelve las reglas de Entidades Legales para OM PP",
+				"operationId": "getOmLegalEntityPP",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"name": "product_type",
+						"in": "query",
+						"description": "product_type",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "country_code_site",
+						"in": "query",
+						"description": "country_code_site",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "affiliated_agency",
+						"in": "query",
+						"description": "affiliated_agency",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "sell_type",
+						"in": "query",
+						"description": "sell_type",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"x-examples":[
+                  {
+                      "title": "Obtener Enteidad Legal Om PP",
+                      "uriParams": {
+                          "product_type": "AUTO",
+                          "country_code_site": "AR",
+                          "sell_type": "DOMESTIC",
+                          "affiliated_agency": "TRUE"
+                      }
+                  }
+                ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/OmLegalEntityPPActiveDto"
+							}
+						},
+						"examples":{
+                        	"application/json":[
+                          	  	{
+                          	     "id": 21,
+                                 "afiliated": "TRUE",
+                                 "country_code_site": "AR",
+                 				 "product_type": "AUTO",
+                 				 "rule_start_date":"24/11/2016",
+                 				 "sell_type":"DOMESTIC",
+                 				 "legal_entity_code": "LE006",
+                 				 "legal_entity_description": "Despegar.com.ar SA",
+                 				 "version": 6
+                                }
+                        	  ]
+                        }
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/po-legal-entity": {
+			"get": {
+				"tags": [
+					"Reglas de Entidades Legales PO"
+				],
+				"summary": "Servicio que devuelve las reglas de Entidades Legales para PO",
+				"operationId": "getRulePOLegalEntityList",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "x-access-token",
+						"in": "header",
+						"description": "apiSec token",
+						"required": true,
+						"type": "string",
+						"format": "string"
+					},
+					{
+						"name": "X-Client",
+						"in": "header",
+						"description": "Application name",
+						"required": true,
+						"type": "string",
+						"format": "string"
+					},
+					{
+						"name": "product_type",
+						"in": "query",
+						"description": "product_type",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "country_code_site",
+						"in": "query",
+						"description": "country_code_site",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "country_code_destiny",
+						"in": "query",
+						"description": "country_code_destiny",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "sell_type",
+						"in": "query",
+						"description": "sell_type",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "model",
+						"in": "query",
+						"description": "model",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "vcc",
+						"in": "query",
+						"description": "vcc",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"x-examples":[
+					{
+						"title": "Obtener Entidad Legal PO",
+						"uriParams": {
+							"product_type": "CAR",
+							"country_code_site": "AR",
+							"sell_type": "DOMESTIC",
+							"country_code_destiny": "BR",
+							"model": "NEW",
+							"vcc": "TRUE"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/POLegalEntityActiveDto"
+							}
+						},
+						"examples":{
+							"application/json":
+							{
+								"id": 21,
+								"country_code_site": "AR",
+								"product_type": "CAR",
+								"product_type_description": "Auto",
+								"rule_start_date":"15/02/2017",
+								"sell_type":"DOMESTIC",
+								"sell_type_description": "Domestico",
+								"country_code_destiny": "BR",
+								"model": "NEW",
+								"model_description": "Nuevo",
+								"virtual_credit_card": "TRUE",
+								"virtual_credit_card_description": "Verdadero",
+								"legal_entity_code": "LE006",
+								"legal_entity_description": "Despegar.com.ar SA",
+								"version": 6
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"500": {
+						"description": "Internal Error"
+					}
+				}
+			}
+		},
+		"/payment-refund": {
+			"get": {
+				"tags": [
+					"Reglas de Entidades Legales Payment refund"
+				],
+				"summary": "Servicio que devuelve las reglas de Entidades Legales Payment refund",
+				"operationId": "getPaymentRefund",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"name": "product_type",
+						"in": "query",
+						"description": "product_type",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "country_code_site",
+						"in": "query",
+						"description": "country_code_site",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "payment_method",
+						"in": "query",
+						"description": "payment_method",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "collection_channel",
+						"in": "query",
+						"description": "collection_channel",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "merchant",
+						"in": "query",
+						"description": "merchant",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"x-examples":[
+                  {
+                      "title": "Obtener Enteidad Legal Payment Refund",
+                      "uriParams": {
+                          "product_type": "PAQUETE_CERRADO",
+                          "country_code_site": "CL",
+                          "payment_method": "CASH",
+                          "collection_channel": "SABRE",
+                          "merchant": "AFIL_VUELOS"
+                      }
+                  }
+                ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/PaymentRefundDto"
+							}
+						},
+						"examples":{
+                        	"application/json":[
+                          	  	{
+                          	  	 "id":9,
+                          	  	 "product_type":"PAQUETE_CERRADO",
+                          	  	 "country_code_site":"CL",
+                          	     "collection_channel":"SABRE",
+                          	     "merchant":"AFIL_VUELOS",
+                          	     "payment_method":"CASH",
+                          	     "rule_start_date":"04/12/2016",
+                          	     "legal_entity_code":"LE019",
+                          	     "legal_entity_desctiption":"Despegar.com USA, Inc.",
+                          	     "version":2
+                                }
+                        	  ]
+                        }
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/fictional-charge": {
+			"get": {
+				"tags": [
+					"Reglas de Entidades Legales Cobro Ficticio"
+				],
+				"summary": "Servicio que devuelve las reglas de Entidades Legales Cobro Ficticio",
+				"operationId": "getFictionalCharge",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"name": "om_legal_code",
+						"in": "query",
+						"description": "om_legal_code",
+						"required": true,
+						 "type": "string",
+                        "format": "string"
+					},
+					{
+						"name": "arrf_legal_code",
+						"in": "query",
+						"description": "arrf_legal_code",
+						"required": true,
+						 "type": "string",
+                        "format": "string"
+					}
+				],
+				"x-examples":[
+                  {
+                      "title": "Obtener Enteidad Legal Payment Refund",
+                      "uriParams": {
+					    "id": 34,
+					    "rule_start_date": "19/12/2016",
+					    "legal_entity_omdesctiption": "Decolar.com Ltda",
+					    "legal_entity_omcode": "LE004",
+					    "legal_entity_arrfdesctiption": "Despegar.com Perú SAC",
+					    "legal_entity_arrfcode": "LE007",
+					    "fictional_charge": true,
+					    "version": 9
+                      }
+                  }
+                ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/FictionalChargeDto"
+							}
+						},
+						"examples":{
+                        	"application/json":[
+                          	  	{
+                          	  	    "id": 34,
+								    "rule_start_date": "19/12/2016",
+								    "legal_entity_omdesctiption": "Decolar.com Ltda",
+								    "legal_entity_omcode": "LE004",
+								    "legal_entity_arrfdesctiption": "Despegar.com Perú SAC",
+								    "legal_entity_arrfcode": "LE007",
+								    "fictional_charge": true,
+								    "version": 9
+                                }
+                        	  ]
+                        }
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/legal-entity-oracle-invoice": {
+			"get": {
+				"tags": [
+					"Entidad Legal para Facturacion PAM"
+				],
+				"summary": "Regla de Entidades Legales para Facturacion PAM",
+				"description": "Devuelve la entidad legal que corresponde a la Regla",
+				"operationId": "getLegalEntity",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"name": "country_code",
+						"in": "query",
+						"description": "country_code",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "channel",
+						"in": "query",
+						"description": "channel",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "product_type",
+						"in": "query",
+						"description": "product_type",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/LegalEntityDto"
+						},
+						"examples":{
+                        	"application/json":[
+                          	  	{
+                                  "id": "1",
+                                  "code": "LE006",
+                                  "description": "Despegar.com.ar SA",
+                                  "taxpayer_id": "30701307115",
+                                  "operational": true,
+                                  "creation_date": "10/10/2016 00:00:00",
+                                  "updated_date": "10/10/2016 00:00:00",
+                                  "enabled": true,
+                                  "country_code": "AR"
+                                }
+                        	  ]
+                        }
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/rule-legal-entity-invoice": {
+			"get": {
+				"tags": [
+					"Regla de Entidad Legal para Facturacion PAM"
+				],
+				"summary": "Devuelve las reglas cargadas de facturacion PAM",
+				"operationId": "getOracleLegalEntityForInvoicingList",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "apiSec token",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "X-Client",
+                        "in": "header",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+					{
+						"name": "country_code",
+						"in": "query",
+						"description": "country_code",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "channel",
+						"in": "query",
+						"description": "channel",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "product_type",
+						"in": "query",
+						"description": "product_type",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/OracleLegalEntityForInvoicingDto"
+							}
+						},
+						"examples":{
+                        	"application/json":[
+                          	  	{
+                                  "id": "1",
+                                  "rule_start_date": "10/10/2016 00:00:00",
+                                  "country_code": "AR",
+                                  "channel": "LOCAL",
+                                  "product_type": "AUTO",
+                                  "legal_entity_code":"LE006",
+                                  "legal_entity_description": "Despegar.com.ar SA",
+                                  "creation_date": "09/10/2016 00:00:00",
+                                  "updated_date": "09/10/2016 00:00:00"
+                                }
+                        	  ]
+                        }
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/rule-charge": {
+			"get": {
+				"tags": [
+					"Regla de Cobranza en Cuotas"
+				],
+				"summary": "Servicio que devuelve una regla de Cobranza en Cuotas",
+				"operationId": "getRuleCharge",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+	                    "name": "x-access-token",
+	                    "in": "header",
+	                    "description": "apiSec token",
+	                    "required": true,
+	                    "type": "string",
+	                    "format": "string"
+	                },
+	                {
+	                    "name": "X-Client",
+	                    "in": "header",
+	                    "description": "Nombre de Aplicacion",
+	                    "required": true,
+	                    "type": "string",
+	                    "format": "string"
+	                },
+					{
+						"name": "legal_entity_taxpayer_id",
+						"in": "query",
+						"description": "TaxpayerId de Entidad Legal",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "merchant_charge_code",
+						"in": "query",
+						"description": "Codigo de Merchant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "date_charge",
+						"in": "query",
+						"description": "Fecha Cobranza",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "date_charge_iso",
+						"in": "query",
+						"description": "Fecha Cobranza ISO",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "installments",
+						"in": "query",
+						"description": "Cuotas",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"x-examples":[
+	              {
+	                  "title": "Obtener Regla",
+	                  "uriParams": {
+	                      "legal_entity_taxpayer_id": "96.907.830-9",
+	                      "merchant_charge_code": "promo_10_cuotas",
+	                      "date_charge":"01/01/2016",
+	                      "installments": "4",
+	                      "date_charge_iso":"20160101T000000Z"
+	                  }
+	              }
+	            ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/RuleChargeDto"
+							}
+						},
+						"examples":{
+	                    	"application/json":[
+	                      	  	{
+	                              "id": "1",
+	                              "legal_entity_code": "LE015",
+	                              "legal_entity_description": "Despegar.com Chile S.A",
+	                              "legal_entity_taxpayer_id": "969078309",
+	                              "merchant_charge_id": "2",
+	                              "merchant_charge_description": "promo_10_cuotas",
+	                              "date_from": "01/01/2016",
+	                              "date_from_iso":"20160101T000000Z",
+	                              "date_to": "31/01/2016",
+	                              "date_to_iso":"20160131T000000Z",
+	                              "installments": "4",
+	                              "divide_on_installments": "true"
+	                            }
+	                    	  ]
+	                    }
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"OracleLegalEntityForInvoicingDto": {
+			"type": "object",
+			"properties": {
+				"channel": {
+					"type": "string"
+				},
+				"country_code": {
+					"type": "string"
+				},
+				"creation_date": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"legal_entity_code": {
+					"type": "string"
+				},
+				"legal_entity_description": {
+					"type": "string"
+				},
+				"product_type": {
+					"type": "string"
+				},
+				"rule_start_date": {
+					"type": "string"
+				},
+				"updated_date": {
+					"type": "string"
+				}
+			}
+		},
+		"BroadcastSubscriberDto": {
+			"type": "object",
+			"properties": {
+				"app_name": {
+					"type": "string"
+				},
+				"callback_url": {
+					"type": "string"
+				},
+				"creation_date": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"subscriber_type": {
+					"type": "string",
+					"enum": [
+						"LEGAL_ENTITY",
+						"ORACLE_LEGAL_ENTITY_INVOICING",
+						"SELL_TYPE"
+					]
+				},
+				"updated_date": {
+					"type": "string"
+				}
+			}
+		},
+		"BasicOutputDto": {
+			"type": "object",
+			"properties": {
+				"cause": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				},
+				"status": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"OmLegalEntityPADActiveDto":{
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"country_code_site": {
+					"type": "string"
+				},
+				"product_type": {
+					"type": "string",
+					"enum": [
+						"ALL",
+					    "AUTO",
+					    "HOTEL"
+					]
+				},
+				"rule_start_date": {
+					"type": "string"
+				},
+				"sell_type": {
+					"type": "string",
+					"enum": [
+					    "DOMESTIC",
+					    "INTERNATIONAL"
+					]
+				},
+				"country_code_destiny": {
+					"type": "string"
+				},
+				"legal_entity_code": {
+					"type": "string"
+				},
+				"legal_entity_description": {
+					"type": "string"
+				},
+				"version": {
+					"type": "integer"
+				}
+			}
+		},
+		"POLegalEntityActiveDto":{
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"country_code_site": {
+					"type": "string"
+				},
+				"product_type": {
+					"type": "string",
+					"enum": [
+						"ALL",
+						"CAR",
+						"BUS",
+						"CRUISE",
+						"EXCURSION",
+						"FEE_CRUCERO",
+						"FEE_VUELO",
+						"HOTEL",
+						"OTRO",
+						"PAQUETE_CERRADO",
+						"PRODUCTO_GENERICO",
+						"SEGURO",
+						"SERVICIO",
+						"TICKET_DISNEY",
+						"TICKET_UNIVERSAL",
+						"TOUR_OPERADOR",
+						"TRASLADO",
+						"VUELO"
+					]
+				},
+				"rule_start_date": {
+					"type": "string"
+				},
+				"sell_type": {
+					"type": "string",
+					"enum": [
+						"DOMESTIC",
+						"INTERNATIONAL"
+					]
+				},
+				"country_code_destiny": {
+					"type": "string"
+				},
+				"model": {
+					"type": "string"
+				},
+				"virtual_credit_card": {
+					"type": "string"
+				},
+				"legal_entity_code": {
+					"type": "string"
+				},
+				"legal_entity_description": {
+					"type": "string"
+				},
+				"version": {
+					"type": "integer"
+				}
+			}
+		},
+		"OmLegalEntytyPPActiveDto":{
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"rule_start_date": {
+					"type": "string"
+				},
+				"country_code_site": {
+					"type": "string"
+				},
+				"product_type": {
+					"type": "string",
+					"enum": [
+						"ALL",
+					    "CAR",
+					    "BUS",
+					    "CRUISE",
+					    "EXCURSION",
+					    "FEE_CRUCERO",
+					    "FEE_VUELO",
+					    "HOTEL",
+					    "OTHER",
+					    "PAQUETE_CERRADO",
+					    "GENERIC_PRODUCT",
+					    "SEGURO",
+					    "SERVICE",
+					    "TICKET_DISNEY",
+					    "TICKET_UNIVERSAL",
+					    "TOUR_OPERADOR",
+					    "TRASLADO",
+					    "FLIGHT"
+					]
+				},
+				"affiliated_agency": {
+					"type": "string",
+					"enum": [
+					    "FALSE",
+					    "TRUE"
+					]
+				},
+				"sell_type": {
+					"type": "string",
+					"enum": [
+					    "DOMESTIC",
+					    "INTERNATIONAL"
+					]
+				},
+              "sell_type_description": {
+                "type": "string"
+              },
+              "collection_channel": {
+                "type": "string"
+              },
+              "collection_channel_description": {
+                "type": "string"
+              },
+              "merchant_id": {
+                "type": "string"
+              },
+              "merchant_id_description": {
+                "type": "string"
+              }
+			}
+		},
+		"FictionalChargeDto":{
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"rule_start_date": {
+					"type": "string"
+				},
+				"om_legal_code": {
+					"type": "string"
+				},
+				"arrf_legal_code": {
+					"type": "string"
+				}
+			}
+		},
+		"PaymentRefundDto":{
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"rule_start_date": {
+					"type": "string"
+				},
+				"country_code_site": {
+					"type": "string"
+				},
+				"product_type": {
+					"type": "string",
+					"enum": [
+						"ALL",
+					    "AUTO",
+					    "BUS",
+					    "CRUCERO",
+					    "EXCURSION",
+					    "FEE_CRUCERO",
+					    "FEE_VUELO",
+					    "HOTEL",
+					    "OTRO",
+					    "PAQUETE_CERRADO",
+					    "PRODUCTO_GENERICO",
+					    "SEGURO",
+					    "SERVICIO",
+					    "TICKET_DISNEY",
+					    "TICKET_UNIVERSAL",
+					    "TOUR_OPERADOR",
+					    "TRASLADO",
+					    "VUELO"
+					]
+				},
+				"currency_type":{
+						"type": "string",
+						"enum": [
+						    "DOLAR",
+							"REAL",
+						    "PESOS_ARGENTINA",
+						    "PESOS_CHILE",
+						    "PESOS_URUGUAY",
+						    "PESOS_MEXICANOS",
+						    "PESOS_COLOMBIA",
+						    "NUEVOSOL_PERU",
+						    "SUCRE_ECUADOR",
+						    "BALBOA_PANAMA",
+						    "COLON_COSTA_RICA",
+						    "BOLIVARES_FUERTES"
+						]
+					},
+					"payment_method":{
+						"type": "string",
+						"enum": [
+						    "CREDIT_CARD",
+							"BANK",
+						    "CASH",
+						    "DEPOSITO",
+						    "SAFETYPAY"
+						]
+					},
+					"collection_channel":{
+						"type": "string",
+						"enum": [
+						    "GLOBAL_COLLECT",
+							"AEROLINEA",
+						    "BSP",
+						    "SABRE",
+						    "ADQUIRA",
+						    "AMADEUS",
+							"AMEX",
+						    "AVIANCA",
+						    "BRASPAG",
+						    "GOL",
+						    "INTERJET",
+							"LAPOSWEB_DESPEGAR",
+						    "LAPOSWEB_TRAVEL_AEROLINEA",
+						    "POSNET",
+						    "REDEBAN",
+						    "REDEBAN_DESPEGAR",
+							"SUB_1",
+						    "TELEFONICA_AEROLINEA",
+						    "TRANSBANK_AEROLINEA",
+						    "TRANSBANK_DESPEGAR",
+						    "VISA",
+						    "VISA_NET",
+							"VOLARIS",
+						    "VPN_VISA_DESPEGAR",
+						    "VPOS_DESPEGAR",
+						    "WEBJET",
+						    "WEBPOS_AEROLINEA",
+							"WEBPOS_DESPEGAR",
+						    "WORLDPAY",
+						    "WORLDPAY1",
+						    "WORLDSPAN"
+						]
+					},
+				 "merchant":{
+						"type": "string",
+						"enum": [
+						    "DESPEGARUSD",
+							"DESPEGARMOTOUSD",
+						    "DESPEGARWPH1BR",
+						    "GC_DESPEGAR",
+						    "AFIL_HOTELES",
+						    "AFIL_VUELOS",
+							"DESPE_HOTELES",
+						    "DESPE_ONA",
+						    "DESPEGARWPHUSA1",
+						    "S1_DESPEGAR1",
+						    "S1_DESPEGAR2",
+						    "S1_ESPECIAL"
+						]
+					}
+			}
+		},
+		"RuleSellTypeDto": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"rule_start_date": {
+					"type": "string"
+				},
+				"product_type": {
+					"type": "string",
+					"enum": [
+						"ALL",
+					    "AUTO",
+					    "BUS",
+					    "CRUCERO",
+					    "EXCURSION",
+					    "FEE_CRUCERO",
+					    "FEE_VUELO",
+					    "HOTEL",
+					    "OTRO",
+					    "PAQUETE_CERRADO",
+					    "PRODUCTO_GENERICO",
+					    "SEGURO",
+					    "SERVICIO",
+					    "TICKET_DISNEY",
+					    "TICKET_UNIVERSAL",
+					    "TOUR_OPERADOR",
+					    "TRASLADO",
+					    "VUELO"
+					]
+				},
+				"country_code_site": {
+					"type": "string"
+				},
+				"country_code_destiny": {
+					"type": "string"
+				},
+				"country_code_provider": {
+					"type": "string"
+				},
+				"assistance_type": {
+					"type": "string",
+					"enum": [
+						"ALL",
+					    "DOMESTIC",
+					    "INTERNATIONAL"
+					]
+				},
+				"affiliated_agency": {
+					"type": "string",
+					"enum": [
+						"ALL",
+					    "FALSE",
+					    "TRUE"
+					]
+				},
+				"product_type_description": {
+					"type": "string"
+				},
+				"assistance_type_description": {
+					"type": "string"
+				},
+				"affiliated_agency_description": {
+					"type": "string"
+				},
+				"sell_type_description": {
+					"type": "string"
+				}
+			}
+		},
+		"ProviderCodeRuleDto": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"rule_start_date": {
+					"type": "string"
+				},
+				"flight_provider": {
+					"type": "string"
+				},
+				"airline": {
+					"type": "string"
+				},
+				"flight_type": {
+					"type": "string"
+				},
+				"event_type": {
+					"type": "string"
+				}
+			}
+		},
+		"LegalEntityDto": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "string"
+				},
+				"country_code": {
+					"type": "string"
+				},
+				"creation_date": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"enabled": {
+					"type": "boolean"
+				},
+				"enabled_si_no": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"operational": {
+					"type": "boolean"
+				},
+				"operational_si_no": {
+					"type": "string"
+				},
+				"taxpayer_id": {
+					"type": "string"
+				},
+				"updated_date": {
+					"type": "string"
+				},
+				"taxpayer_id_formatted": {
+					"type": "string"
+				}
+			}
+		},
+		"RuleChargeDto": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"legal_entity_code": {
+					"type": "string"
+				},
+				"legal_entity_description": {
+					"type": "string"
+				},
+				"legal_entity_taxpayer_id": {
+					"type": "string"
+				},
+				"merchant_charge_id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"merchant_charge_description": {
+					"type": "string"
+				},
+				"date_from": {
+					"type": "string"
+				},
+				"date_to": {
+					"type": "string"
+				},
+				"installments": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"divide_on_installments": {
+					"type": "boolean"
+				}
+			}
+		}
+	}
+}
