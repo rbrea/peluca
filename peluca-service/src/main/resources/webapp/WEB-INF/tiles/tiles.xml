@@ -40,10 +40,13 @@
     </definition>
     
     <!-- PLain Views -->    
-    <definition name="index" extends="mainTemplate">
+    <!-- <definition name="index" extends="mainTemplate">
     	<put-attribute name="title" value="CFA Mixer - Home" />
         <put-attribute name="body" value="/WEB-INF/pages/index.jsp" />
-    </definition>
+    </definition> -->
+    
+    <definition name="index" template="/WEB-INF/pages/index2.jsp"></definition>
+    
     <definition name="login" template="/WEB-INF/pages/template/login/login.jsp"/>
     <!-- API-DOCS -->
     <definition name="docs" template="/WEB-INF/pages/template/docs/docs.jsp"/>
