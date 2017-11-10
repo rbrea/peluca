@@ -1573,8 +1573,8 @@ jQuery(function($) {
                     "infoFiltered": /*"(filtrados de un total de _MAX_ registros)"*/"",
                     "search": "Buscar: ",
                     "paginate": {
-                    	"previous": "<i class='glyphicon glyphicon-step-backward'></i>",
-        				"next": "<i class='glyphicon glyphicon-step-forward'></i>"
+                    	"previous": "Anterior",
+        				"next": "Siguiente"
         			}
                 }
             });
