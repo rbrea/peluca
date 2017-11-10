@@ -17,9 +17,18 @@
     <definition name="index" template="/WEB-INF/pages/index2.jsp"></definition>
     
     <definition name="index2" extends="defaultTemplate">
-    	<put-attribute name="title" value="Peluca - Administrador de Peluqueria" />
-    	<put-attribute name="page-name" value="Inicio" />
+    	<put-attribute name="title" value="ICETEA HairSoftware - Administrador de Peluqueria" />
         <put-attribute name="body" value="/WEB-INF/pages/index-alt.jsp" />
+    </definition>
+    
+    <definition name="customer-search" extends="defaultTemplate">
+    	<put-attribute name="title" value="ICETEA HairSoftware - Administrador de Peluqueria" />
+        <put-attribute name="body" value="/WEB-INF/pages/customer/customer-search.jsp" />
+    </definition>
+    
+    <definition name="customer-form" extends="defaultTemplate">
+    	<put-attribute name="title" value="ICETEA HairSoftware - Administrador de Peluqueria" />
+        <put-attribute name="body" value="/WEB-INF/pages/customer/customer-form.jsp" />
     </definition>
 
 </tiles-definitions>

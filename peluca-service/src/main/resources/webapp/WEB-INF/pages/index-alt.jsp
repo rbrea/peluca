@@ -1,7 +1,28 @@
+<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Historial</h1>                            
+       	</div>
+       	<div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="index-2.html"><i class="fa fa-home"></i>Inicio</a>
+                </li>
+                <li>
+                    <a href="#">B&uacute;squeda</a>
+                </li>
+                <li class="active">
+                    <strong>Servicios Realizados</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
 <div class="col-lg-12">
 	<section class="box ">
 		<header class="panel_header">
-			<h2 class="title pull-left">B&uacute;squeda de Servicios Realizados</h2>
+			<h2 class="title pull-left">Historial</h2>
 			<div class="actions panel_actions pull-right">
 				<i class="box_toggle fa fa-chevron-down"></i> <i
 					class="box_setting fa fa-cog" data-toggle="modal"

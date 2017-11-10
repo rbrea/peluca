@@ -27,6 +27,9 @@
         <link href="${pageContext.request.contextPath}/app/public/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/app/public/assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/app/public/assets/plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="${pageContext.request.contextPath}/app/public/assets/plugins/icheck/skins/all.css" rel="stylesheet" type="text/css" media="screen"/>        
+        
         <!-- CORE CSS FRAMEWORK - END -->
         <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> 
         <link href="${pageContext.request.contextPath}/app/public/assets/plugins/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen"/>
@@ -56,27 +59,6 @@
             <!-- START CONTENT -->
             <section id="main-content" class=" ">
                 <section class="wrapper main-wrapper" style=''>
-                    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-                        <div class="page-title">
-                            <div class="pull-left">
-                                <h1 class="title"><tiles:insertAttribute name="page-name" /></h1>                            
-                           	</div>
-                           	<div class="pull-right hidden-xs">
-                                <ol class="breadcrumb">
-                                    <li>
-                                        <a href="index-2.html"><i class="fa fa-home"></i>Inicio</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">B&uacute;squeda</a>
-                                    </li>
-                                    <li class="active">
-                                        <strong>Servicios Realizados</strong>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
                     <tiles:insertAttribute name="body" />
                 </section>
             </section>
@@ -107,6 +89,7 @@
         <script src="${pageContext.request.contextPath}/app/public/assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/app/public/assets/plugins/datatables/extensions/Responsive/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
         <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> 
+        <script src="${pageContext.request.contextPath}/app/public/assets/plugins/autosize/autosize.min.js" type="text/javascript"></script>
 
         <!-- CORE TEMPLATE JS - START --> 
         <script src="${pageContext.request.contextPath}/app/public/assets/js/scripts.js" type="text/javascript"></script> 

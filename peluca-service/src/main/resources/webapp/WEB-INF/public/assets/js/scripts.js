@@ -3708,13 +3708,13 @@ jQuery(function($) {
         ULTRA_SETTINGS.uiCalendar();
         ULTRA_SETTINGS.tocifyScrollMenu();
         ULTRA_SETTINGS.loadPrettyPhoto();
-        ULTRA_SETTINGS.jvectorMaps();
+        //ULTRA_SETTINGS.jvectorMaps();
         ULTRA_SETTINGS.dataTablesInit();
         ULTRA_SETTINGS.jsTreeINIT();
         ULTRA_SETTINGS.breadcrumbAutoHidden();
-        ULTRA_SETTINGS.chatAPI();
-        ULTRA_SETTINGS.chatApiScroll();
-        ULTRA_SETTINGS.chatApiWindow();
+        //ULTRA_SETTINGS.chatAPI();
+        //ULTRA_SETTINGS.chatApiScroll();
+        //ULTRA_SETTINGS.chatApiWindow();
         ULTRA_SETTINGS.mailboxInbox();
         ULTRA_SETTINGS.ultraWidgets();
         ULTRA_SETTINGS.sectionBoxActions();

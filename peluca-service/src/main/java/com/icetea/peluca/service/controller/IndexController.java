@@ -15,14 +15,22 @@ public class IndexController {
 	
 	@RequestMapping(value = "/html/index", method = RequestMethod.GET)
     public String index(){
-		
         return "index";
     }
 	
 	@RequestMapping(value = "/html/index2", method = RequestMethod.GET)
     public String index2(){
-		
         return "index2";
+    }
+	
+	@RequestMapping(value = "/html/customer-search", method = RequestMethod.GET)
+    public String customerSearch(){
+        return "customer-form";
+    }
+	
+	@RequestMapping(value = "/html/customer-form", method = RequestMethod.GET)
+    public String customerForm(){
+        return "customer-form";
     }
 	
 }
