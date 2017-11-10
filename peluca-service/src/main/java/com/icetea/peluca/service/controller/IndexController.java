@@ -19,4 +19,10 @@ public class IndexController {
         return "index";
     }
 	
+	@RequestMapping(value = "/html/index2", method = RequestMethod.GET)
+    public String index2(){
+		
+        return "index2";
+    }
+	
 }

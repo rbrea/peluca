@@ -1559,12 +1559,24 @@ jQuery(function($) {
 
             /*--- start ---*/
 
-            $("#example-1").dataTable({
+            $("#customer-table").dataTable({
                 responsive: true,
                 aLengthMenu: [
                     [10, 25, 50, 100, -1],
-                    [10, 25, 50, 100, "All"]
-                ]
+                    [10, 25, 50, 100, "Todos"]
+                ],
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por p&aacute;gina",
+                    "zeroRecords": "No se ha encontrado ning&uacute;n elemento",
+                    "info": "P&aacute;gina _PAGE_ de _PAGES_ <b>(Total: _MAX_)</b>",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": /*"(filtrados de un total de _MAX_ registros)"*/"",
+                    "search": "Buscar: ",
+                    "paginate": {
+                    	"previous": "<i class='glyphicon glyphicon-step-backward'></i>",
+        				"next": "<i class='glyphicon glyphicon-step-forward'></i>"
+        			}
+                }
             });
 
             /*--- end ---*/

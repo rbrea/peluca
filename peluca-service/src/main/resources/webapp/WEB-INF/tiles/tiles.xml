@@ -4,41 +4,10 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
   
-    <definition name="defaultTemplate" template="/WEB-INF/pages/template/default/defaultTemplate.jsp">
-        <put-attribute name="header" value="/WEB-INF/pages/template/default/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/pages/template/default/menu.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/pages/template/default/footer.jsp" />
+    <definition name="defaultTemplate" template="/WEB-INF/pages/template/main-template.jsp">
+    	<put-attribute name="topbar" value="/WEB-INF/pages/template/topbar.jsp" />
+        <put-attribute name="sidebar" value="/WEB-INF/pages/template/sidebar.jsp" />
     </definition>
-    
-    <definition name="mainTemplate" template="/WEB-INF/pages/template/main/template.jsp">
-        <put-attribute name="header" value="/WEB-INF/pages/template/main/header.jsp" />
-        <put-attribute name="styles" value="/WEB-INF/pages/template/main/styles.jsp" />
-        <put-attribute name="scripts-header" value="/WEB-INF/pages/template/main/scripts-header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/pages/template/main/menu.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/pages/template/main/footer.jsp" />
-        <put-attribute name="sidebar" value="/WEB-INF/pages/template/main/sidebar.jsp" />
-        <put-attribute name="scripts" value="/WEB-INF/pages/template/main/scripts.jsp" />
-    </definition>
-    
-    <definition name="loginTemplate" template="/WEB-INF/pages/template/login/login-template.jsp">
-        <put-attribute name="header" value="/WEB-INF/pages/template/main/header.jsp" />
-        <put-attribute name="styles" value="/WEB-INF/pages/template/main/styles.jsp" />
-        <put-attribute name="scripts-header" value="/WEB-INF/pages/template/main/scripts-header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/pages/template/main/menu.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/pages/template/main/footer.jsp" />
-        <put-attribute name="scripts" value="/WEB-INF/pages/template/main/scripts.jsp" />
-    </definition>
-    
-    <definition name="mainTemplateRule" template="/WEB-INF/pages/template/main/template-rule.jsp">
-        <put-attribute name="header" value="/WEB-INF/pages/template/main/header.jsp" />
-        <put-attribute name="styles" value="/WEB-INF/pages/template/main/styles.jsp" />
-        <put-attribute name="scripts-header" value="/WEB-INF/pages/template/main/scripts-header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/pages/template/main/menu.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/pages/template/main/footer.jsp" />
-        <put-attribute name="sidebar" value="/WEB-INF/pages/template/main/sidebar.jsp" />
-        <put-attribute name="scripts" value="/WEB-INF/pages/template/main/scripts.jsp" />
-    </definition>
-    
     <!-- PLain Views -->    
     <!-- <definition name="index" extends="mainTemplate">
     	<put-attribute name="title" value="CFA Mixer - Home" />
@@ -47,13 +16,10 @@
     
     <definition name="index" template="/WEB-INF/pages/index2.jsp"></definition>
     
-    <definition name="login" template="/WEB-INF/pages/template/login/login.jsp"/>
-    <!-- API-DOCS -->
-    <definition name="docs" template="/WEB-INF/pages/template/docs/docs.jsp"/>
-    <!-- PLain Views -->    
-    <definition name="cluster-monitor" extends="mainTemplate">
-    	<put-attribute name="title" value="CFA Mixer - Cluster Monitor" />
-        <put-attribute name="body" value="/WEB-INF/pages/monitor/cluster-monitor.jsp" />
+    <definition name="index2" extends="defaultTemplate">
+    	<put-attribute name="title" value="Peluca - Administrador de Peluqueria" />
+    	<put-attribute name="page-name" value="Inicio" />
+        <put-attribute name="body" value="/WEB-INF/pages/index-alt.jsp" />
     </definition>
 
 </tiles-definitions>
